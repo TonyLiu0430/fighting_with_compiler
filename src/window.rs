@@ -135,6 +135,8 @@ impl Window {
                 unsafe {
                     PostQuitMessage(0);
                 }
+                // temp
+                panic!("close window");
                 return LRESULT(0);
             }
             _ => {

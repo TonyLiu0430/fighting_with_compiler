@@ -266,7 +266,7 @@ impl D3d11Renderer {
             },
             VertexPosColor {
                 position: XMFLOAT3 {
-                    x: 0.0,
+                    x: 0.5,
                     y: -0.5,
                     z: 0.5,
                 },
@@ -342,6 +342,16 @@ impl D3d11Renderer {
 
         self.render_target_view = None;
         self.depth_stencil_view = None;
+        
+        
+        let mut size = size;
+        
+        if (size.height == 0) {
+            size.height = 1;
+        }
+        if (size.width == 0) {
+            size.width = 1;
+        }
 
         unsafe {
             self.swap_chain.ResizeBuffers(1, size.width as u32, size.height as u32, DXGI_FORMAT_R8G8B8A8_UNORM, DXGI_SWAP_CHAIN_FLAG(0)).expect("Resize failed");
